@@ -20,11 +20,8 @@ module Api
 
       # PATCH/PUT /products/1
       def update
-        if @product.update(update_product_params)
-          render json: @product
-        else
-          render json: @product, serializer: ProductSerializer, status: :unprocessable_entity
-        end
+        @product = UpdateProductService.call(@product, update_product_params)
+        render json: @product
       end
 
       def prices
@@ -52,7 +49,8 @@ module Api
       private
 
       def set_product
-        @product = Product.find(params[:id])
+        @product = Product.find_by(id: params[:id])
+        validate_product
       end
 
       def product_params
@@ -67,6 +65,11 @@ module Api
         return if AuthenticationService.authenticate?(request)
 
         render json: { error: 'Unauthorized' }, status: :unauthorized
+      end
+
+      def validate_product
+        error, status = ProductErrorsValidator.call(@product)
+        render(json: { error: }, status:) if error.present?
       end
     end
   end
