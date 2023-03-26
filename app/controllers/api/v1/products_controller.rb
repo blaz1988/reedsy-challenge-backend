@@ -6,19 +6,16 @@ module Api
       before_action :set_product, only: %i[show update]
       before_action :authenticate, only: [:update]
 
-      # GET /products
       def index
         @products = ProductService.call
 
         render json: @products, each_serializer: ProductSerializer
       end
 
-      # GET /products/1
       def show
         render json: @product, serializer: ProductSerializer
       end
 
-      # PATCH/PUT /products/1
       def update
         @product = UpdateProductService.call(@product, update_product_params)
         render json: @product

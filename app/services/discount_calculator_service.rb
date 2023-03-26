@@ -3,6 +3,9 @@
 class DiscountCalculatorService
   include Callable
 
+  TSHIRT_CODE = 'TSHIRT'
+  MUG_CODE = 'MUG'
+
   def initialize(code, quantity, price)
     @code = code.upcase
     @quantity = quantity.to_i
@@ -11,9 +14,9 @@ class DiscountCalculatorService
 
   def call
     case code
-    when 'TSHIRT'
+    when TSHIRT_CODE
       quantity >= 3 ? price * 0.7 : price
-    when 'MUG'
+    when MUG_CODE
       discount_percentage = calculate_mug_discount(quantity)
       price * (1 - discount_percentage * 0.01)
     else
