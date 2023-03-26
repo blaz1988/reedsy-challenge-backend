@@ -7,12 +7,11 @@ This is a simple API for a merchandising store. It allows you to manage products
 ## Setup
 
 1. Clone the repository: `git clone https://github.com/blaz1988/merchandising-store.git`
-2. `cd merchandising-store`
-3. Install required gems: `bundle install`
-4. Create db: `bundle exec rake db:create`
+2. Install required gems: `bundle install`
+3. Create db: `bundle exec rake db:create`
 4. Run database migrations: `bundle exec rake db:migrate`
-4. Populate db data: `bundle exec rake db:seed`
-5. Run the server: `bundle exec rails server`
+5. Populate db data: `bundle exec rake db:seed`
+6. Run the server: `bundle exec rails server`
 
 ## API Endpoints
 
