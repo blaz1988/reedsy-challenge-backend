@@ -2,8 +2,4 @@
 
 class ProductSerializer < ActiveModel::Serializer
   attributes :id, :code, :name, :price
-
-  attribute :status do
-    :unprocessable_entity
-  end
 end

@@ -81,7 +81,7 @@ RSpec.describe 'Api::V1::Products', type: :request do
       before { get "/api/v1/products/prices?items=#{URI.encode_www_form_component(invalid_items)}" }
 
       it 'returns an unprocessable entity response' do
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:bad_request)
       end
 
       it 'returns an error message' do
@@ -116,7 +116,7 @@ RSpec.describe 'Api::V1::Products', type: :request do
       before { get "/api/v1/products/prices-with-discounts?items=#{URI.encode_www_form_component(invalid_items)}" }
 
       it 'returns an unprocessable entity response' do
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:bad_request)
       end
 
       it 'returns an error message' do

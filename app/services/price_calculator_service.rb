@@ -22,8 +22,7 @@ class PriceCalculatorService
   end
 
   def total_prices
-    total_prices = {}
-    parser.items.each do |item|
+    @total_prices ||= parser.items.each_with_object({}) do |item, total_prices|
       quantity, code = item.match(/(\d+)\s+(.+)/).captures
       code = code.upcase
       product_price = eligible_products[code]
@@ -31,6 +30,5 @@ class PriceCalculatorService
       total = product_price ? product_price * quantity.to_i : 0
       total_prices[code] = total
     end
-    total_prices
   end
 end

@@ -31,7 +31,7 @@ module Api
         parser = ProductParamsParser.new(params[:items])
 
         if parser.error.present?
-          render json: { error: parser.error }, status: :unprocessable_entity
+          render json: { error: parser.error }, status: :bad_request
         else
           total_price = PriceCalculatorService.call(parser)
           render json: { total: total_price }
@@ -42,7 +42,7 @@ module Api
         parser = ProductParamsParser.new(params[:items])
 
         if parser.error.present?
-          render json: { error: parser.error }, status: :unprocessable_entity
+          render json: { error: parser.error }, status: :bad_request
         else
           total_price = PriceCalculatorService.call(parser, DiscountCalculatorService)
           render json: { total: total_price }
