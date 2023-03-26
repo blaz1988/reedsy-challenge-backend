@@ -1,0 +1,16 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "",
+  "apis": [
+
+  ],
+  "authorizations": null,
+  "info": {
+    "title": "Rails API Documentation",
+    "description": "This is a sample API documentation for the Rails API.",
+    "contact": "ivan.blazevic@rubycode.co",
+    "license": "Apache 2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.html"
+  }
+}
