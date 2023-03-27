@@ -12,6 +12,7 @@ This is a simple API for a merchandising store. It allows you to manage products
 4. Run database migrations: `bundle exec rake db:migrate`
 5. Populate db data: `bundle exec rake db:seed`
 6. Run the server: `bundle exec rails server`
+7. Run tests: bundle exec rspec
 
 ## API Endpoints
 
