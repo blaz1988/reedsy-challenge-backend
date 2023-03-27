@@ -6,7 +6,7 @@ This is a simple API for a merchandising store. It allows you to manage products
 
 ## Setup
 
-1. Clone the repository: `git clone https://github.com/blaz1988/merchandising-store.git`
+1. Clone the repository: `git clone git@github.com:blaz1988/reedsy-challenge-backend.git`
 2. Install required gems: `bundle install`
 3. Create db: `bundle exec rake db:create`
 4. Run database migrations: `bundle exec rake db:migrate`
