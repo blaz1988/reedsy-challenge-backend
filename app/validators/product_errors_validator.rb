@@ -8,10 +8,16 @@ class ProductErrorsValidator
   end
 
   def call
-    ['Product not found!', :not_found] unless product.present?
+    return ['Product not found!', :not_found] unless product.present?
+
+    [product.errors.full_messages.join(','), :unprocessable_entity] if errors?
   end
 
   private
 
   attr_reader :product
+
+  def errors?
+    product&.errors&.any?
+  end
 end

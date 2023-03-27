@@ -9,6 +9,8 @@ class UpdateProductService
   end
 
   def call
+    return if product.nil?
+
     product.update(update_params)
     product
   end

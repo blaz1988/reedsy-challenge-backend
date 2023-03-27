@@ -13,12 +13,22 @@ module Api
       end
 
       def show
-        render json: @product, serializer: ProductSerializer
+        error, status = ProductErrorsValidator.call(@product)
+        if error.present?
+          render(json: { error: }, status:)
+        else
+          render(json: @product, serializer: ProductSerializer)
+        end
       end
 
       def update
         @product = UpdateProductService.call(@product, update_product_params)
-        render json: @product
+        error, status = ProductErrorsValidator.call(@product)
+        if error.present?
+          render(json: { error: }, status:)
+        else
+          render(json: @product, serializer: ProductSerializer)
+        end
       end
 
       def prices
@@ -47,7 +57,6 @@ module Api
 
       def set_product
         @product = Product.find_by(id: params[:id])
-        validate_product
       end
 
       def product_params
@@ -62,11 +71,6 @@ module Api
         return if AuthenticationService.authenticate?(request)
 
         render json: { error: 'Unauthorized' }, status: :unauthorized
-      end
-
-      def validate_product
-        error, status = ProductErrorsValidator.call(@product)
-        render(json: { error: }, status:) if error.present?
       end
     end
   end

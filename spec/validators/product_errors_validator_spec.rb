@@ -21,5 +21,15 @@ RSpec.describe ProductErrorsValidator do
         expect(subject).to eq(expected_error)
       end
     end
+
+    context 'when the product has validation errors' do
+      let(:product) { build(:product, price: -1) }
+      let(:expected_error) { ['Price must be greater than or equal to 0', :unprocessable_entity] }
+      before { product.valid? }
+
+      it 'returns the expected error' do
+        expect(subject).to eq(expected_error)
+      end
+    end
   end
 end
